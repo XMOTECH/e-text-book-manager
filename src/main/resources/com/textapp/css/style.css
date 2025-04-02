@@ -1,0 +1,71 @@
+/* Style de l'AnchorPane principal (fond de l'écran) */
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #1976D2, #4CAF50); /* Dégradé bleu-vert */
+}
+
+/* Style de la boîte centrale (VBox avec fx:id="loginBox") */
+#loginBox {
+    -fx-background-color: #F5F5F5; /* Fond blanc cassé */
+    -fx-background-radius: 10; /* Coins arrondis */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 5, 5); /* Ombre subtile */
+    -fx-padding: 20; /* Espacement interne */
+    -fx-max-width: 400; /* Largeur ajustée */
+    -fx-spacing: 15; /* Espacement entre les éléments */
+    -fx-alignment: center; /* Centrer les éléments à l'intérieur */
+}
+
+/* Style du titre (Label avec fx:id="titleLabel") */
+#titleLabel {
+    -fx-text-fill: #F5A623; /* Orange */
+    -fx-font-family: "Roboto"; /* Police moderne */
+    -fx-font-size: 18; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-padding: 0 0 20 0; /* Marge en bas */
+}
+
+/* Style des HBox qui contiennent les champs et les icônes */
+.hbox {
+    -fx-spacing: 10; /* Espacement entre l'icône et le champ */
+    -fx-padding: 10 0 10 0; /* Marge en haut et en bas */
+    -fx-alignment: center-left; /* Alignement à gauche */
+}
+
+/* Style des icônes (ImageView avec fx:id="userIcon" et "lockIcon") */
+#userIcon, #lockIcon {
+    -fx-opacity: 0.7; /* Légère transparence */
+}
+
+/* Style des champs de saisie (TextField et PasswordField) */
+#usernameField, #passwordField {
+    -fx-background-color: #FFFFFF; /* Fond blanc */
+    -fx-border-color: #CCCCCC; /* Bordure grise */
+    -fx-border-width: 1; /* Épaisseur de la bordure */
+    -fx-background-radius: 5; /* Coins arrondis */
+    -fx-border-radius: 5; /* Coins arrondis pour la bordure */
+    -fx-pref-width: 300; /* Largeur ajustée */
+    -fx-text-fill: #333333; /* Couleur du texte */
+    -fx-font-size: 14; /* Taille de la police */
+    -fx-padding: 5; /* Espacement interne */
+}
+
+/* Style du bouton "Se connecter" (Button avec fx:id="loginButton") */
+#loginButton {
+    -fx-background-color: #1976D2; /* Fond bleu */
+    -fx-text-fill: #FFFFFF; /* Texte blanc */
+    -fx-font-size: 14; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-background-radius: 5; /* Coins arrondis */
+    -fx-pref-width: 250; /* Largeur ajustée */
+    -fx-padding: 10; /* Espacement interne */
+    -fx-margin: 20 0 0 0; /* Marge en haut */
+    -fx-border-width: 0; /* Supprime toute bordure par défaut */
+}
+
+/* Style du label d'erreur (Label avec fx:id="errorLabel") */
+#errorLabel {
+    -fx-text-fill: #D32F2F; /* Texte rouge */
+    -fx-font-size: 12; /* Taille de la police */
+    -fx-padding: 10 0 0 0; /* Marge en haut */
+    -fx-alignment: center; /* Centré */
+    -fx-min-height: 20; /* Réserve de l'espace même si vide */
+}

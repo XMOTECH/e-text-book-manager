@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" stylesheets="@../css/chefsStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.textapp.controller.CheifController">
+    <!-- Define the ToggleGroup -->
+    <fx:define>
+        <ToggleGroup fx:id="menuToggleGroup" />
+    </fx:define>
+
+    <!-- Sidebar (Modern, collapsible, inspired by Slack) -->
+    <left>
+        <VBox fx:id="sidebar" prefWidth="250.0" styleClass="sidebar">
+            <!-- Sidebar Header -->
+            <HBox alignment="CENTER_LEFT" styleClass="sidebar-header">
+                <padding>
+                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                </padding>
+                <ImageView fx:id="appLogo" fitHeight="32.0" fitWidth="32.0" styleClass="app-logo">
+                    <image>
+                        <Image url="@../images/hierarchical-structure.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="sidebarTitleLabel" styleClass="sidebar-title" text="CourseHub" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="toggleSidebarButton" onAction="#toggleSidebar" styleClass="icon-button" text="☰" />
+            </HBox>
+
+            <!-- Sidebar Content (to be hidden/shown) -->
+            <VBox fx:id="sidebarContent" styleClass="sidebar-content" spacing="5.0" VBox.vgrow="ALWAYS">
+                <!-- Search Bar -->
+                <HBox styleClass="sidebar-search">
+                    <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="0.0" />
+                    </padding>
+                    <TextField fx:id="sidebarSearchField" promptText="Search..." styleClass="modern-textfield" HBox.hgrow="ALWAYS" />
+                </HBox>
+
+                <!-- Navigation Menu -->
+                <VBox styleClass="sidebar-nav" spacing="5.0">
+                    <ToggleButton fx:id="dashboardIcon" onAction="#showDashboardView" selected="true" styleClass="nav-button" toggleGroup="$menuToggleGroup">
+                        <graphic>
+                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                <image>
+                                    <Image url="@../images/dashboard.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                        <text>Dashboard</text>
+                    </ToggleButton>
+                    <ToggleButton fx:id="usersIcon" onAction="#showManageUsersView" styleClass="nav-button" toggleGroup="$menuToggleGroup">
+                        <graphic>
+                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                <image>
+                                    <Image url="@../images/profile.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                        <text>Manage Users</text>
+                    </ToggleButton>
+                    <ToggleButton fx:id="coursesIcon" onAction="#showAssignCoursesView" styleClass="nav-button" toggleGroup="$menuToggleGroup">
+                        <graphic>
+                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                <image>
+                                    <Image url="@../images/book.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                        <text>Assign Courses</text>
+                    </ToggleButton>
+                    <ToggleButton fx:id="reportsIcon" onAction="#showGenerateReportsView" styleClass="nav-button" toggleGroup="$menuToggleGroup">
+                        <graphic>
+                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                <image>
+                                    <Image url="@../images/report.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                        <text>Reports</text>
+                    </ToggleButton>
+                    <ToggleButton fx:id="viewCoursesIcon" onAction="#showViewCoursesView" styleClass="nav-button" toggleGroup="$menuToggleGroup">
+                        <graphic>
+                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                <image>
+                                    <Image url="@../images/ebook.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                        <text>View Courses</text>
+                    </ToggleButton>
+                </VBox>
+            </VBox>
+
+            <!-- User Profile and Logout -->
+            <VBox fx:id="sidebarFooter" styleClass="sidebar-footer" spacing="10.0">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <ImageView fitHeight="32.0" fitWidth="32.0" styleClass="profile-image">
+                        <image>
+                            <Image url="@../images/user.png" />
+                        </image>
+                    </ImageView>
+                    <Label fx:id="userLabel" styleClass="user-name" text="User" />
+                </HBox>
+                <Button fx:id="logoutButton" onAction="#logout" styleClass="logout-button" text="Déconnexion" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox styleClass="main-content">
+            <HBox styleClass="main-header">
+                <padding>
+                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                </padding>
+                <Label fx:id="sectionTitleLabel" styleClass="main-title" text="Dashboard" />
+                <Region HBox.hgrow="ALWAYS" />
+                <ComboBox fx:id="timeRangeComboBox" styleClass="modern-combobox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Last Day" />
+                            <String fx:value="Last Week" />
+                            <String fx:value="Last Month" />
+                            <String fx:value="All Time" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </HBox>
+            <StackPane fx:id="contentStackPane" styleClass="content-pane" VBox.vgrow="ALWAYS">
+                <!-- Dashboard View -->
+                <VBox fx:id="dashboardView" styleClass="card" managed="true" visible="true">
+                    <HBox alignment="CENTER" spacing="20.0" styleClass="metrics-section">
+                        <VBox alignment="CENTER" spacing="10.0" styleClass="metric-card">
+                            <ProgressIndicator fx:id="coursesAssignedGauge" styleClass="dashboard-gauge" />
+                            <Label fx:id="coursesAssignedLabel" styleClass="metric-label" text="Assigned Courses" />
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="10.0" styleClass="metric-card">
+                            <ProgressIndicator fx:id="teachersAssignedGauge" styleClass="dashboard-gauge" />
+                            <Label fx:id="teachersAssignedLabel" styleClass="metric-label" text="Assigned Teachers" />
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="10.0" styleClass="metric-card">
+                            <ProgressIndicator fx:id="reportsGeneratedGauge" styleClass="dashboard-gauge" />
+                            <Label fx:id="reportsGeneratedLabel" styleClass="metric-label" text="Generated Reports" />
+                        </VBox>
+                    </HBox>
+                    <HBox spacing="20.0" styleClass="dashboard-content">
+                        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                            <Label styleClass="section-title" text="Assignment Trends" />
+                            <LineChart fx:id="assignmentsChart" styleClass="modern-chart">
+                                <xAxis>
+                                    <CategoryAxis label="Time" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Courses" />
+                                </yAxis>
+                            </LineChart>
+                        </VBox>
+                        <VBox styleClass="card" prefWidth="300.0">
+                            <Label styleClass="section-title" text="Top Teachers" />
+                            <TableView fx:id="topTeachersTable" styleClass="modern-table">
+                                <columns>
+                                    <TableColumn fx:id="teacherNameColumn" prefWidth="180.0" text="Teacher">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="username" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="courseCountColumn" prefWidth="100.0" text="Courses">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="courseCount" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </HBox>
+                </VBox>
+                <!-- Manage Users View -->
+                <VBox fx:id="manageUsersView" styleClass="card" managed="false" visible="false">
+                    <HBox spacing="15.0" styleClass="form-section">
+                        <TextField fx:id="usernameField" promptText="Username" styleClass="modern-textfield" />
+                        <TextField fx:id="passwordField" promptText="Password" styleClass="modern-textfield" />
+                        <ComboBox fx:id="roleComboBox" promptText="Role" styleClass="modern-combobox" />
+                        <Button fx:id="addUserButton" onAction="#addUser" styleClass="modern-button" text="Add User" />
+                    </HBox>
+                    <TableView fx:id="userTable" styleClass="modern-table">
+                        <columns>
+                            <TableColumn fx:id="userIdColumn" prefWidth="80.0" text="ID">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="id" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="usernameColumn" prefWidth="180.0" text="Username">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="username" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="roleIdColumn" prefWidth="100.0" text="Role">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="roleId" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="userActionColumn" prefWidth="120.0" text="Actions" />
+                        </columns>
+                    </TableView>
+                    <Label fx:id="userMessageLabel" styleClass="message-label" />
+                </VBox>
+                <!-- Assign Courses View -->
+                <VBox fx:id="assignCoursesView" styleClass="card" managed="false" visible="false">
+                    <HBox spacing="15.0" styleClass="form-section">
+                        <ComboBox fx:id="courseComboBox" promptText="Course" styleClass="modern-combobox" />
+                        <ComboBox fx:id="teacherComboBox" promptText="Teacher" styleClass="modern-combobox" />
+                        <TextField fx:id="scheduleField" promptText="Schedule (e.g., Mon 10-12)" styleClass="modern-textfield" />
+                        <Button fx:id="assignCourseButton" onAction="#assignCourse" styleClass="modern-button" text="Assign" />
+                    </HBox>
+                    <TableView fx:id="courseAssignmentTable" styleClass="modern-table">
+                        <columns>
+                            <TableColumn fx:id="courseAssignmentIdColumn" prefWidth="120.0" text="Course ID">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="courseId" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="teacherAssignmentIdColumn" prefWidth="180.0" text="Teacher ID">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="teacherId" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="courseAssignmentActionColumn" prefWidth="120.0" text="Actions" />
+                        </columns>
+                    </TableView>
+                    <Label fx:id="courseMessageLabel" styleClass="message-label" />
+                </VBox>
+                <!-- Generate Reports View -->
+                <VBox fx:id="generateReportsView" styleClass="card" managed="false" visible="false">
+                    <HBox spacing="15.0" styleClass="form-section">
+                        <ComboBox fx:id="reportTypeComboBox" promptText="Report Type" styleClass="modern-combobox" />
+                        <ComboBox fx:id="exportFormatComboBox" promptText="Format" styleClass="modern-combobox" />
+                        <Button fx:id="generateReportButton" onAction="#generateReport" styleClass="modern-button" text="Generate" />
+                    </HBox>
+                    <HBox spacing="10.0" alignment="CENTER_LEFT">
+                        <Label fx:id="reportMessageLabel" styleClass="message-label" />
+                        <Button fx:id="openReportButton" onAction="#openReport" styleClass="modern-button" text="Open Report" managed="false" visible="false" />
+                    </HBox>
+                </VBox>
+                <!-- View Courses View (Updated to match the image) -->
+                <VBox fx:id="viewCoursesView" styleClass="card" managed="false" visible="false">
+                    <TableView fx:id="coursesTable" styleClass="modern-table">
+                        <columns>
+                            <TableColumn fx:id="courseIdColumn" prefWidth="100.0" text="Cours_ID">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="id" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="dateColumn" prefWidth="150.0" text="Date">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="date" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="contentColumn" prefWidth="300.0" text="Contenu">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="content" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="validColumn" prefWidth="100.0" text="Valide">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="valid" />
+                                </cellValueFactory>
+                            </TableColumn>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </StackPane>
+        </VBox>
+    </center>
+</BorderPane>

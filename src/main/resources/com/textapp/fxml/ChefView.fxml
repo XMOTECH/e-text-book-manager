@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="1000.0" prefWidth="1000.0" styleClass="root" stylesheets="@../css/chefStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.textapp.controller.CheifController">
+   <top>
+      <BorderPane styleClass="top-bar">
+         <left>
+            <Label styleClass="title-label" text="Tableau de bord - Chef de département" BorderPane.alignment="CENTER_LEFT" />
+         </left>
+         <right>
+            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" text="Déconnexion" BorderPane.alignment="CENTER_RIGHT">
+               <styleClass>
+                  <String fx:value="button" />
+               </styleClass>
+               <graphic>
+                  <ImageView fitHeight="20" fitWidth="20" styleClass="custom-icon">
+                     <image>
+                        <Image url="@../images/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </right>
+      </BorderPane>
+   </top>
+   <left>
+      <VBox prefHeight="935.0" prefWidth="267.0" spacing="10.0" styleClass="vbox" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <Label styleClass="title-label" text="Menu" />
+            <Button fx:id="showAddUserButton" mnemonicParsing="false" onAction="#showAddUserView" styleClass="menu-button" text="Ajouter un utilisateur">
+               <graphic>
+                  <ImageView fitHeight="20" fitWidth="20" styleClass="custom-icon">
+                     <image>
+                        <Image url="@../images/add-contact.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="loadUsersButton" mnemonicParsing="false" onAction="#loadUsers" styleClass="menu-button" text="Charger les utilisateurs">
+               <graphic>
+                  <ImageView fitHeight="20" fitWidth="20" styleClass="custom-icon">
+                     <image>
+                        <Image url="@../images/refresh.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox fx:id="centerContent" prefHeight="935.0" prefWidth="681.0" styleClass="vbox" BorderPane.alignment="CENTER" />
+   </center>
+  </BorderPane>

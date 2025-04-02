@@ -1,0 +1,47 @@
+.dialog-pane {
+    -fx-font-family: "Poppins", "Arial", sans-serif;
+    -fx-background-color: #F9FAFB;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E5E7EB;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #1F2937;
+}
+
+.dialog-pane .content.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #4B5563;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-font-size: 14px;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button-bar .button:default {
+    -fx-background-color: #3B82F6;
+    -fx-text-fill: #FFFFFF;
+}
+
+.dialog-pane .button-bar .button:default:hover {
+    -fx-background-color: #2563EB;
+}
+
+.dialog-pane .button-bar .button:cancel {
+    -fx-background-color: #E5E7EB;
+    -fx-text-fill: #4B5563;
+}
+
+.dialog-pane .button-bar .button:cancel:hover {
+    -fx-background-color: #D1D5DB;
+}

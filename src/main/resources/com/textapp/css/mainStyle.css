@@ -1,0 +1,44 @@
+
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #1976D2, #4CAF50); /* Dégradé bleu-vert */
+}
+/* Fond spécifique pour MainView */
+#rootMainView{
+    -fx-background-color: linear-gradient(to bottom right, #4CAF50, #F5A623); /* Dégradé vert-orange pour MainView */
+}
+
+/* Style de la boîte centrale pour MainView (VBox avec fx:id="mainBox") */
+#mainBox {
+    -fx-background-color: #E0E0E0; /* Fond gris clair */
+    -fx-background-radius: 10; /* Coins arrondis */
+    -fx-border-color: #F5A623; /* Bordure orange */
+    -fx-border-width: 2; /* Épaisseur de la bordure */
+    -fx-border-radius: 10; /* Bordure arrondie */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 5, 5); /* Ombre subtile */
+    -fx-padding: 20; /* Espacement interne */
+    -fx-max-width: 400; /* Largeur ajustée */
+    -fx-spacing: 15; /* Espacement entre les éléments */
+    -fx-alignment: center; /* Centrer les éléments à l'intérieur */
+}
+
+/* Style du titre pour MainView (Label avec fx:id="welcomeLabel") */
+#welcomeLabel {
+    -fx-text-fill: #4CAF50; /* Vert foncé */
+    -fx-font-family: "Arial"; /* Police différente pour distinction */
+    -fx-font-size: 20; /* Taille légèrement plus grande */
+    -fx-font-weight: bold; /* Gras */
+    -fx-padding: 0 0 20 0; /* Marge en bas */
+}
+
+/* Style du bouton "Déconnexion" (Button avec fx:id="logoutButton") */
+#logoutButton {
+    -fx-background-color: #F5A623; /* Fond orange */
+    -fx-text-fill: #FFFFFF; /* Texte blanc */
+    -fx-font-size: 14; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-background-radius: 5; /* Coins arrondis */
+    -fx-pref-width: 250; /* Largeur ajustée */
+    -fx-padding: 10; /* Espacement interne */
+    -fx-margin: 20 0 0 0; /* Marge en haut */
+    -fx-border-width: 0; /* Supprime toute bordure par défaut */
+}

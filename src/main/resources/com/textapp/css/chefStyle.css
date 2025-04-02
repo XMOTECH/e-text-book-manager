@@ -1,0 +1,399 @@
+/* Style global pour l'arrière-plan */
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #1e3c72, #2a5298);
+    -fx-font-family: "Arial";
+    -fx-clip: none; /* Désactive le clipping */
+}
+
+/* Style pour le BorderPane dans la section top */
+.top-bar {
+    -fx-padding: 10;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.2) transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* Style pour les conteneurs principaux (VBox) */
+.vbox {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);
+    -fx-alignment: center;
+    -fx-spacing: 15;
+    -fx-min-width: 200;
+    -fx-clip: none; /* Assure que le menu reste visible */
+}
+
+/* Reste du CSS inchangé... */
+/* Style pour les titres */
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #48669e;
+    -fx-padding: 0 0 10 0;
+}
+
+/* Style pour les messages de bienvenue */
+.welcome-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #555555;
+    -fx-min-width: 120;
+}
+
+/* Style pour les boutons */
+.button {
+    -fx-background-color: #2a5298;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 24;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 3);
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+/* Animation au survol des boutons */
+.button:hover {
+    -fx-background-color: #1e3c72;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0, 0, 5);
+}
+
+/* Style spécifique pour le Chef */
+.chef-button {
+    -fx-background-color: #ff6f61;
+}
+
+/* Animation au survol pour le bouton Chef */
+.chef-button:hover {
+    -fx-background-color: #e65a50;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0, 0, 5);
+}
+
+/* Style pour les boutons du menu à gauche */
+.menu-button {
+    -fx-background-color: #2a5298;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 3);
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+    -fx-alignment: center-left;
+    -fx-min-width: 160; /* Largeur minimale pour les boutons du menu */
+}
+
+/* Animation au survol des boutons du menu */
+.menu-button:hover {
+    -fx-background-color: #1e3c72;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0, 0, 5);
+}
+
+/* Style pour les icônes (ImageView) */
+.custom-icon {
+    -fx-opacity: 0.7;
+    -fx-transition: all 0.3s ease;
+}
+
+/* Animation au survol des icônes */
+.button:hover .custom-icon, .menu-button:hover .custom-icon {
+    -fx-opacity: 1.0;
+    -fx-effect: dropshadow(gaussian, #ff6f61, 15, 0.7, 0, 0);
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+/* Style pour le TableView */
+.table-view {
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #d3d3d3;
+    -fx-padding: 10;
+}
+
+.table-view .column-header {
+    -fx-background-color: #2a5298;
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .table-cell {
+    -fx-alignment: center;
+    -fx-text-fill: #333333;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #f1f1f1;
+}
+
+.table-view .table-row-cell:even {
+    -fx-background-color: #ffffff;
+}
+
+/* Style pour les champs de texte */
+.text-field, .password-field {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #d3d3d3;
+    -fx-padding: 8;
+    -fx-background-color: #f9f9f9;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+    -fx-max-width: 200; /* Limiter la largeur des champs */
+}
+
+/* Effet au focus pour les champs de texte */
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #2a5298;
+    -fx-effect: dropshadow(gaussian, #2a5298, 10, 0.5, 0, 0);
+}
+
+/* Style pour le ComboBox */
+.combo-box {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #d3d3d3;
+    -fx-padding: 8;
+    -fx-background-color: #f9f9f9;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+    -fx-max-width: 200;
+}
+
+/* Effet au focus pour le ComboBox */
+.combo-box:focused {
+    -fx-border-color: #2a5298;
+    -fx-effect: dropshadow(gaussian, #2a5298, 10, 0.5, 0, 0);
+}
+.toggle-button {
+    -fx-background-color: #48669e;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-padding: 5;
+}
+
+.toggle-button:hover {
+    -fx-background-color: #3a527d;
+}/* Style pour le menu d'icônes (style WhatsApp) */
+.icon-menu {
+    -fx-background-color: #f0f2f5;
+    -fx-padding: 15 0 15 0;
+    -fx-alignment: center;
+}
+
+.icon-menu-profile {
+    -fx-padding: 10 0 20 0;
+}
+
+.profile-image {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+.notification-badge {
+    -fx-background-color: #25D366;
+    -fx-text-fill: white;
+    -fx-background-radius: 100;
+    -fx-padding: 2 6 2 6;
+    -fx-font-size: 10;
+    -fx-min-width: 18;
+    -fx-min-height: 18;
+    -fx-max-width: 18;
+    -fx-max-height: 18;
+    -fx-alignment: center;
+}
+
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+    -fx-content-display: graphic-only;
+    -fx-background-radius: 100;
+    -fx-min-width: 45;
+    -fx-min-height: 45;
+    -fx-max-width: 45;
+    -fx-max-height: 45;
+}
+
+.icon-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.icon-button:selected {
+    -fx-background-color: #d4d8dc;
+}
+
+.icon-button-logout {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+    -fx-content-display: graphic-only;
+    -fx-background-radius: 100;
+    -fx-min-width: 45;
+    -fx-min-height: 45;
+    -fx-max-width: 45;
+    -fx-max-height: 45;
+}
+
+.icon-button-logout:hover {
+    -fx-background-color: rgba(231, 76, 60, 0.3);
+}
+
+/* Style pour la sidebar (détails) */
+.sidebar {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 1 0 1;
+}
+
+.sidebar-header {
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 15;
+}
+
+.sidebar-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.sidebar-search-field {
+    -fx-background-color: #f0f2f5;
+    -fx-background-radius: 20;
+    -fx-padding: 8 15 8 15;
+    -fx-prompt-text-fill: #8696a0;
+}
+
+.sidebar-content {
+    -fx-padding: 10;
+    -fx-spacing: 5;
+}
+
+/* Style pour les éléments dans la sidebar */
+.sidebar-item {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.sidebar-item:hover {
+    -fx-background-color: #f0f2f5;
+}
+
+.sidebar-item:selected {
+    -fx-background-color: #e5effa;
+}
+
+.sidebar-item-title {
+    -fx-font-weight: bold;
+}
+
+.sidebar-item-subtitle {
+    -fx-text-fill: #8696a0;
+    -fx-font-size: 12;
+}
+
+/* Ajustements pour le contenu principal */
+.main-content {
+    -fx-padding: 0 0 0 0;
+}
+.sidebar-content {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 1 0 0;
+    -fx-pref-width: 250; /* Largeur lorsqu'étendu */
+}
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+}
+.icon-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+.icon-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+    -fx-background-radius: 100;
+    -fx-min-width: 45;
+    -fx-min-height: 45;
+    -fx-max-width: 45;
+    -fx-max-height: 45;
+    -fx-transition: -fx-background-color 0.3s ease; /* Animation fluide */
+}
+
+.icon-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.icon-button:selected {
+    -fx-background-color: #d4d8dc;
+}
+.sidebar-item {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-transition: -fx-background-color 0.2s ease; /* Animation fluide */
+}
+
+.sidebar-item:hover {
+    -fx-background-color: #f0f2f5;
+}
+
+.sidebar-item:selected {
+    -fx-background-color: #e5effa;
+}
+.sidebar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 1 0 1;
+}
+
+.icon-menu {
+    -fx-background-color: #f0f2f5;
+    -fx-padding: 15 0 15 0;
+    -fx-alignment: center;
+}
+
+.notification-badge {
+    -fx-background-color: #25D366; /* Vert WhatsApp */
+    -fx-text-fill: white;
+    -fx-background-radius: 100;
+    -fx-padding: 2 6 2 6;
+    -fx-font-size: 10;
+    -fx-min-width: 18;
+    -fx-min-height: 18;
+    -fx-max-width: 18;
+    -fx-max-height: 18;
+    -fx-alignment: center;
+}
+.sidebar-item-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #111111;
+}
+
+.sidebar-item-subtitle {
+    -fx-text-fill: #8696a0;
+    -fx-font-size: 12px;
+}

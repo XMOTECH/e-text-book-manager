@@ -1,0 +1,166 @@
+/* Style global pour le fond principal */
+.root {
+    -fx-background-color: #F7FAFC; /* Gris très clair */
+}
+
+/* Style de la sidebar */
+#sidebar {
+    -fx-background-color: #EDF2F7; /* Gris pâle */
+    -fx-border-color: #E2E8F0; /* Bordure grise claire */
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 10px;
+}
+
+/* Style commun pour les boutons de la sidebar */
+.sidebar-button {
+    -fx-background-color: #E2E8F0; /* Fond gris clair */
+    -fx-text-fill: #4A5568; /* Texte gris foncé */
+    -fx-background-radius: 6px;
+    -fx-padding: 8px 16px;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #CBD5E0; /* Gris plus foncé au survol */
+    -fx-cursor: hand;
+}
+
+.sidebar-button:pressed {
+    -fx-background-color: #63B3ED; /* Bleu au clic */
+    -fx-text-fill: #FFFFFF; /* Texte blanc au clic */
+}
+
+/* Style du bouton "Déconnexion" */
+#logoutButton {
+    -fx-background-color: #EF4444; /* Rouge */
+    -fx-text-fill: #FFFFFF; /* Texte blanc */
+    -fx-background-radius: 6px;
+    -fx-padding: 8px 16px;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+#logoutButton:hover {
+    -fx-background-color: #DC2626; /* Rouge plus foncé au survol */
+    -fx-cursor: hand;
+}
+
+/* Style du bouton "Ajouter" dans le formulaire */
+#addSessionButton {
+    -fx-background-color: #4C51BF; /* Violet foncé */
+    -fx-text-fill: #FFFFFF; /* Texte blanc */
+    -fx-background-radius: 8px;
+    -fx-padding: 8px 20px;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); /* Ombre subtile */
+}
+
+#addSessionButton:hover {
+    -fx-background-color: #434190; /* Violet plus foncé au survol */
+}
+
+/* Style du TableView */
+.table-view {
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-color: #FFFFFF; /* Fond blanc */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #E2E8F0; /* En-tête gris clair */
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #4A5568; /* Texte gris foncé */
+    -fx-font-size: 13px;
+    -fx-padding: 8px;
+}
+
+.table-view .table-cell {
+    -fx-border-color: transparent;
+    -fx-padding: 10px;
+    -fx-text-fill: #2D3748; /* Texte gris foncé */
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #F7FAFC; /* Lignes impaires gris très clair */
+}
+
+.table-view .table-row-cell:even {
+    -fx-background-color: #FFFFFF; /* Lignes paires blanches */
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #63B3ED; /* Bleu pour la ligne sélectionnée */
+    -fx-text-fill: #FFFFFF; /* Texte blanc pour la ligne sélectionnée */
+}
+
+/* Style du ComboBox */
+#courseComboBox {
+    -fx-background-color: #FFFFFF; /* Fond blanc */
+    -fx-border-color: #CBD5E0; /* Bordure grise claire */
+    -fx-border-radius: 4px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+#courseComboBox .list-cell {
+    -fx-text-fill: #2D3748; /* Texte gris foncé */
+}
+
+#courseComboBox .list-cell:hover {
+    -fx-background-color: #EDF2F7; /* Fond gris pâle au survol */
+}
+
+#courseComboBox .list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CBD5E0;
+    -fx-border-radius: 4px;
+}
+
+/* Style du DatePicker */
+#datePicker {
+    -fx-background-color: #FFFFFF; /* Fond blanc */
+    -fx-border-color: #CBD5E0; /* Bordure grise claire */
+    -fx-border-radius: 4px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+#datePicker .text-field {
+    -fx-text-fill: #2D3748; /* Texte gris foncé */
+}
+
+/* Style du TextArea */
+#contentArea {
+    -fx-background-color: #FFFFFF; /* Fond blanc */
+    -fx-border-color: #CBD5E0; /* Bordure grise claire */
+    -fx-border-radius: 4px;
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #2D3748; /* Texte gris foncé */
+    -fx-prompt-text-fill: #A0AEC0; /* Texte du placeholder gris clair */
+}
+
+/* Style du Label de titre dans le formulaire */
+#addSessionForm .label {
+    -fx-font-size: 20px;
+    -fx-text-fill: #2D3748; /* Texte gris foncé */
+    -fx-font-weight: bold;
+}
+
+/* Style du Label de feedback */
+#messageLabel {
+    -fx-text-fill: #718096; /* Gris moyen */
+    -fx-font-size: 13px;
+    -fx-padding: 10px;
+}
+
+#messageLabel:error {
+    -fx-text-fill: #EF4444; /* Rouge pour les erreurs */
+}
+
+#messageLabel:success {
+    -fx-text-fill: #10B981; /* Vert pour les succès */
+}
