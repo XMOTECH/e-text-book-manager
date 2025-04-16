@@ -23,8 +23,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.ss.usermodel.Row;
@@ -45,8 +43,6 @@ import java.util.List;
 import java.util.Map;
 
 public class CheifController {
-
-    private static final Logger logger = LogManager.getLogger(CheifController.class);
 
     @FXML
     private Label dashboardBadge;
@@ -308,11 +304,11 @@ public class CheifController {
         loadTeachers();
 
         // Logs pour vérifier les données chargées
-        logger.info("Nombre d'utilisateurs chargés : {}", userData.size());
-        logger.info("Nombre de cours chargés : {}", courseData.size());
-        logger.info("Nombre d'assignations chargées : {}", courseAssignmentData.size());
-        logger.info("Nombre de rôles chargés : {}", roleData.size());
-        logger.info("Nombre d'enseignants chargés : {}", teacherData.size());
+        System.out.println("Nombre d'utilisateurs chargés : " + userData.size());
+        System.out.println("Nombre de cours chargés : " + courseData.size());
+        System.out.println("Nombre d'assignations chargées : " + courseAssignmentData.size());
+        System.out.println("Nombre de rôles chargés : " + roleData.size());
+        System.out.println("Nombre d'enseignants chargés : " + teacherData.size());
 
         // Configurer les ComboBox
         courseComboBox.setItems(courseData);
@@ -617,7 +613,7 @@ public class CheifController {
         } catch (SQLException e) {
             userMessageLabel.setText("Erreur lors de l'ajout de l'utilisateur : " + e.getMessage());
             userMessageLabel.getStyleClass().remove("success");
-            logger.error("Erreur lors de l'ajout de l'utilisateur", e);
+            e.printStackTrace();
         }
     }
 
@@ -632,7 +628,7 @@ public class CheifController {
         } catch (SQLException e) {
             userMessageLabel.setText("Erreur lors de la suppression de l'utilisateur : " + e.getMessage());
             userMessageLabel.getStyleClass().remove("success");
-            logger.error("Erreur lors de la suppression de l'utilisateur", e);
+            e.printStackTrace();
         }
     }
 
@@ -672,7 +668,7 @@ public class CheifController {
         } catch (SQLException e) {
             courseMessageLabel.setText("Erreur lors de l'assignation du cours : " + e.getMessage());
             courseMessageLabel.getStyleClass().remove("success");
-            logger.error("Erreur lors de l'assignation du cours", e);
+            e.printStackTrace();
         }
     }
 
@@ -687,7 +683,7 @@ public class CheifController {
         } catch (SQLException e) {
             courseMessageLabel.setText("Erreur lors de la suppression de l'assignation : " + e.getMessage());
             courseMessageLabel.getStyleClass().remove("success");
-            logger.error("Erreur lors de la suppression de l'assignation", e);
+            e.printStackTrace();
         }
     }
 
@@ -732,7 +728,7 @@ public class CheifController {
             reportMessageLabel.getStyleClass().remove("success");
             openReportButton.setManaged(false);
             openReportButton.setVisible(false);
-            logger.error("Erreur lors de la génération du rapport", e);
+            e.printStackTrace();
         }
     }
 
@@ -744,13 +740,13 @@ public class CheifController {
             } catch (IOException e) {
                 reportMessageLabel.setText("Erreur lors de l'ouverture du fichier : " + e.getMessage());
                 reportMessageLabel.getStyleClass().remove("success");
-                logger.error("Erreur lors de l'ouverture du fichier", e);
+                e.printStackTrace();
             }
         }
     }
 
     private void generateUserReport(String format) throws IOException {
-        logger.info("Génération du rapport utilisateurs, format : {}, nombre d'utilisateurs : {}", format, userData.size());
+        System.out.println("Génération du rapport utilisateurs, format : " + format + ", nombre d'utilisateurs : " + userData.size());
         if (format.equals("Excel")) {
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet sheet = workbook.createSheet("Rapport Utilisateurs");
@@ -808,7 +804,7 @@ public class CheifController {
     }
 
     private void generateCourseReport(String format) throws IOException {
-        logger.info("Génération du rapport cours, format : {}, nombre de cours : {}", format, courseData.size());
+        System.out.println("Génération du rapport cours, format : " + format + ", nombre de cours : " + courseData.size());
         if (format.equals("Excel")) {
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet sheet = workbook.createSheet("Rapport Cours");
@@ -885,7 +881,7 @@ public class CheifController {
             stage.setScene(new Scene(loginView));
             stage.show();
         } catch (IOException e) {
-            logger.error("Erreur lors de la déconnexion", e);
+            e.printStackTrace();
         }
     }
 
@@ -894,7 +890,8 @@ public class CheifController {
             userData.clear();
             userData.addAll(new UserDAO().getAllUsers());
         } catch (SQLException e) {
-            logger.error("Erreur lors du chargement des utilisateurs", e);
+            System.err.println("Erreur lors du chargement des utilisateurs : " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -903,7 +900,8 @@ public class CheifController {
             courseAssignmentData.clear();
             courseAssignmentData.addAll(new CourseAssignmentDAO().getAllAssignments());
         } catch (SQLException e) {
-            logger.error("Erreur lors du chargement des assignations", e);
+            System.err.println("Erreur lors du chargement des assignations : " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -927,7 +925,8 @@ public class CheifController {
             courses.add(new Course(3, "Le nom de l’entité doit suivre i...", "Règles de nommage", "INF101", 3, "Prof C", "Tue 14-16", "2025-04-11", "Le nom de l’entité doit suivre i...", true));
             courseData.addAll(courses);
         } catch (SQLException e) {
-            logger.error("Erreur lors du chargement des cours", e);
+            System.err.println("Erreur lors du chargement des cours : " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -936,17 +935,18 @@ public class CheifController {
             roleData.clear();
             roleData.addAll(new RoleDAO().getAllRoles());
         } catch (SQLException e) {
-            logger.error("Erreur lors du chargement des rôles", e);
+            System.err.println("Erreur lors du chargement des rôles : " + e.getMessage());
+            e.printStackTrace();
         }
     }
+
     private void loadTeachers() {
         try {
             teacherData.clear();
-            List<User> teachers = new UserDAO().getTeachers();
-            teacherData.addAll(teachers);
-            logger.info("Enseignants chargés : {}", teachers.stream().map(User::getUsername).toList());
+            teacherData.addAll(new UserDAO().getTeachers());
         } catch (SQLException e) {
-            logger.error("Erreur lors du chargement des enseignants", e);
+            System.err.println("Erreur lors du chargement des enseignants : " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
